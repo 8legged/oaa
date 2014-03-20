@@ -23,6 +23,7 @@ casper.test.begin('logout', 2, function suite(test) {
     test.assertTextExists('Profile','page body contains profile');
   });
 
+  phantom.clearCookies();
 
   casper.then(function() {
       this.clickLabel('Log out', 'button');
