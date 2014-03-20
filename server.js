@@ -70,6 +70,16 @@ var users = require('./api/routes/userRoutes');
 var meetings = require('./api/routes/meetingRoutes');
 var agendaItems = require('./api/routes/agendaItemRoutes');
 
+// Sessions
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+app.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                    failureRedirect: '/login'}));
+
+
 // Users routes
 app.get('/api/v1/users', users.collection);
 app.get('/api/v1/users/:id', users.findById);
